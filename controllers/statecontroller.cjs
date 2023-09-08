@@ -1,6 +1,8 @@
 const express = require('express');
 const model = require('./../models/facilitymodel.cjs');
 const slugify = require('slugify'); // Import slugify
+
+
 exports.getStatePlants = async (req, res, next) => {
   try {
     const stateSlug = slugify(req.params.state); // Generate state slug
@@ -65,7 +67,7 @@ exports.getCityPlants = async (req, res, next) => {
 
   try {
     const stateData = await model.findOne({ name: state });
-
+    console.log(stateData);
     if (!stateData || !stateData.data || stateData.data.length === 0) {
       return res.status(404).json({
         status: 'error',

@@ -31,13 +31,13 @@ if (process.env.NODE_ENV === 'development') {
 
 app.use(express.json());
 
-app.use((req, res, next) => {
-  console.log('Hello from the middleware 👋');
-  res.status(200).json({
-    message: 'City not found in the specified state',
-  })
-  next();
-});
+// app.use((req, res, next) => {
+//   console.log('Hello from the middleware 👋');
+//   res.status(200).json({
+//     message: 'City not found in the specified state',
+//   })
+//   next();
+// });
 
 app.use((req, res, next) => {
   req.requestTime = new Date().toISOString();
