@@ -32,7 +32,7 @@ app.use('/ewaste', limiter);
 
 // Enable CORS with specific options
 const corsOptions = {
-  origin: '*', // Replace with your allowed origin(s)
+  origin: 'http://localhost:5173', // Replace with your allowed origin(s)
   methods: ['GET', 'POST', 'PUT', 'DELETE'], // Specify allowed HTTP methods
   credentials: true, // Enable credentials (cookies, authorization headers, etc.)
 };
