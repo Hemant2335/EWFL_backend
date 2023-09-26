@@ -72,7 +72,7 @@ exports.updatecartdata = async (req, res, next) => {
       return res.status(404).json({ message: 'User not found' });
     }
 
-    const existingCartItem =  user?.cart?.find((item) => item?._id === cartId );
+    const existingCartItem =  user?.cart?.find((cartItem) => cartItem.cartId === cartId);
 
     console.log(existingCartItem);
 
