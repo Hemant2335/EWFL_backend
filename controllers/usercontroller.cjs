@@ -63,7 +63,7 @@ exports.getUserByUsername = async (req, res, next) => {
 exports.updatecartdata = async (req, res, next) => {
   try {
     const { userId } = req.params;
-    const { cartid, quantity } = req.body; 
+    const { cartid , quantity } = req.body; 
 
     // Find the user by userId
     const user = await User.findById(userId);
@@ -73,7 +73,7 @@ exports.updatecartdata = async (req, res, next) => {
     }
 
     const existingCartItem = user.cart.find(
-      (item) => item.cartId.toString() === unifiedDataid
+      (item) => item.cartId.toString() === cartid.toString()
     );
 
     if (existingCartItem) {
@@ -89,4 +89,4 @@ exports.updatecartdata = async (req, res, next) => {
   }
 };
 
-}
+
