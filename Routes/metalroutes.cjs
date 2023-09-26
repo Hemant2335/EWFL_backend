@@ -73,6 +73,42 @@ router.get('/categories/:category/:subcategory', async (req, res) => {
 
 
 // Route to get item data within a subcategory
+router.get('/categories/item', async (req, res) => {
+  const {itemid} = req.body;
+
+  try {
+    const data = await model.findOne({
+      'subcategories.name': subcategory,
+      'subcategories.data.name': itemName,
+    });
+
+    if (!data) {
+      return res.status(404).json({ message: 'Category, subcategory, or item not found' });
+    }
+
+    const filteredData = [];
+
+    for (const subcategoryItem of data.subcategories) {
+      if (subcategoryItem.name === subcategory) {
+        const itemData = subcategoryItem.data.find((item) => item.name === itemName);
+        if (itemData) {
+          filteredData.push({ subcategory: subcategoryItem.name, itemData });
+        }
+      }
+    }
+
+    if (filteredData.length === 0) {
+      return res.status(404).json({ message: 'Item not found in the subcategory' });
+    }
+
+    res.status(200).json(filteredData);
+  } catch (error) {
+    res.status(500).json({ message: 'Internal server error' });
+  }
+});
+
+
+// Route to get item by itemid
 router.get('/categories/:category/:subcategory/:itemName', async (req, res) => {
   const category = req.params.category;
   const subcategory = req.params.subcategory;

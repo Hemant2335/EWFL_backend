@@ -46,9 +46,9 @@ exports.login = async (req, res, next) => {
     }
 };
 exports.getUserByUsername = async (req, res, next) => {
-    const username = req.params.username; 
+    const _id = req.params.name; 
     try {
-        const user = await User.findOne({ username });
+        const user = await User.findOne({ _id });
 
         if (!user) {
             return res.status(404).json({ message: 'User not found' });
