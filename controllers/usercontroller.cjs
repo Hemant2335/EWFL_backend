@@ -73,7 +73,7 @@ exports.updatecartdata = async (req, res, next) => {
   
       // Check if the cartId already exists in the user's cart
       const existingCartItemIndex = user.cart.findIndex(
-        (item) => item.cartId.toString() === cartId
+        (item) => item.cartId === cartId
       );
   
       if (existingCartItemIndex !== -1) {
