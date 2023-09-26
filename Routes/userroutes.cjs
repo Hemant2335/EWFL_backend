@@ -5,6 +5,6 @@ const usercontroller = require('../controllers/usercontroller.cjs');
 router.post('/signup', usercontroller.signup);
 router.post('/login', usercontroller.login);
 router.get('/:name',usercontroller.getUserByUsername);
-router.put('/:userId/updatecartdata', usercontroller.updatecartdata);
+router.put('/updatecartdata', usercontroller.updatecartdata);
 
 module.exports = router;
