@@ -25,6 +25,7 @@ router.get('/categories/:category/subcategories', async (req, res) => {
 
     const subcategories = data.subcategories.map((sub) => ({
       name: sub.name,
+      img:sub.img,
       data: sub.data,
     }));
 
