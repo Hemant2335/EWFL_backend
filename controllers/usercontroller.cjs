@@ -62,8 +62,7 @@ exports.getUserByUsername = async (req, res, next) => {
 };
 exports.updatecartdata = async (req, res, next) => {
     try {
-      const { userId } = req.params;
-      const { cartId, quantity } = req.body;
+      const { cartId, quantity , userId } = req.body;
   
       // Find the user by userId
       const user = await User.findById(userId);
