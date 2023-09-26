@@ -18,20 +18,20 @@ router.get('/categories/:category/subcategories', async (req, res) => {
   const category = req.params.category;
   try {
     const data = await model.findOne({ 'category':category });
-    console.log(data)
     if (!data) {
       return res.status(404).json({ message: 'Category not found' });
     }
 
-    const subcategories = data.subcategories.map((sub) => ({
-      name: sub.name,
-      img:sub.img,
-      data: sub.data,
-    }));
+    const filteredData = [];
 
-    res.status(200).json(subcategories);
+    for (const subcategory of data?.subcategories) {
+      filteredData.push(subcategory)
+    }
+
+    console.log(data);
+    res.status(200).send(filteredData);
   } catch (error) {
-    res.status(500).json({ message: 'Internal server error' });
+    res.status(500).json({ message: error.message });
   }
 });
 
