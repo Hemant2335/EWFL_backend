@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const bcryptjs = require('bcryptjs');
-
+const UnifiedData=require('./../models/metalmodel');
 // Define the base user schema for email/password-based users
 const userSchema = new mongoose.Schema({
   username: {
@@ -31,6 +31,18 @@ const userSchema = new mongoose.Schema({
       metalRecoveryPoints: Number,
     },
   ],
+  cart: [
+    {
+      cartId: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'UnifiedData', // Reference to the Material model
+      },
+      quantity: {
+        type: Number,
+        default: 0, // Default quantity is 0 if not specified
+      },
+    },
+  ]
 });
 
 // Define the OAuth-specific schema for OAuth-based users
