@@ -56,7 +56,7 @@ router.get('/categories/:category/:subcategory', async (req, res) => {
 
     for (const subcategoryItem of data.subcategories) {
       if (subcategoryItem.name === subcategory) {
-        filteredData.push(subcategoryItem.data);
+        filteredData.push({data:{subcategoryItem.img,subcategoryItem.data}});
       }
     }
 
