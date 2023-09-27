@@ -94,7 +94,7 @@ exports.updatecartdata = async (req, res, next) => {
   };
   exports.getCartItems = async (req, res, next) => {
     try {
-      const { userId } = req.params;
+      const { userId } = req.body;
   
       // Find the user by userId and populate the 'cart.cartId' field
       const user = await User.findById(userId).populate('user.cart.cartId').select('username email cart');
