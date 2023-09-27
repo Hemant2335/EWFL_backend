@@ -5,8 +5,8 @@ const slugify = require('slugify'); // Import slugify
 
 exports.getStatePlants = async (req, res, next) => {
   try {
-    const stateSlug = slugify(req.params.state); // Generate state slug
-
+    const stateSlug = await slugify(req.params.state); // Generate state slug
+    console.log(stateSlug)
     const plants = await model.find({ name: stateSlug }); // Use the slug for the query
 
     if (!plants || plants.length === 0) {
